@@ -7,9 +7,15 @@ public class MyMain {
     // You can use Integer.parseInt() to convert a String into a **decimal** number.
     // Ex. binaryToDecimal("1010") => 10 (ten)
     //     binaryToDecimal("110010") => 50
-    public static int binaryToDecimal(String binary) {
+    public static int binaryToDecimal(String binarystr) {
         // REPLACE WITH YOUR CODE
-        return -1;
+        int decsum = 0;
+        for(int i=0;i <binarystr.length();i++){
+            int binaryinteger = Integer.parseInt(String.valueOf(binarystr.charAt(i)));
+            binaryinteger *= (int) Math.pow(2, (binarystr.length() - i - 1));
+            decsum += binaryinteger;
+        }
+        return decsum;
     }
 
     // Given a decimal number (e.g. 152) as input, and returns a String
@@ -18,7 +24,17 @@ public class MyMain {
     //     decimalToBinary(152) => "10011000"
     public static String decimalToBinary(int decimal) {
         // REPLACE WITH YOUR CODE
-        return "";
+        StringBuilder decistring = new StringBuilder();
+        if (decimal != 0) {
+            while (decimal > 0) {
+                decistring.append(decimal % 2);
+                decimal /= 2;
+            }
+        }
+        else{
+            decistring.append(0);
+        }
+        return String.valueOf(decistring.reverse());
     }
     
     
